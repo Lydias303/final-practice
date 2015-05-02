@@ -1,3 +1,9 @@
+<%= form_for :todo do |f| %>
+  Title: <%= f.text_field :title %><br />
+  Task: <%= f.text_field :task %><br />
+  <%= f.submit %>
+<% end %>
+
 <% @todos.each do |todo|  %>
   <h2><%= todo.title %></h2>
   <%= todo.task %>
