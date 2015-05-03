@@ -28,4 +28,18 @@ RSpec.describe TodosController, type: :controller do
       expect(Todo.count).to eq(0)
     end
   end
+
+
+    describe "PUT #update" do
+      it "can delete a todo" do
+        todo = create(:todo)
+        expect(Todo.count).to eq(1)
+        expect(todo.title).to eq("Grocery Shopping")
+        put :update, id: todo.id, todo: {title: "Clean up", task: "do laundry"}
+
+        assert_redirected_to root_path
+        expect(todo.title).to eq("Clean up")
+        expect(todo.task).to eq("do laundry")
+      end
+    end
 end
