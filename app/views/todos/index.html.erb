@@ -7,4 +7,5 @@
 <% @todos.each do |todo|  %>
   <h2><%= todo.title %></h2>
   <%= todo.task %>
+  <%= button_to "delete", @recipie, :method => :delete %>
 <% end %>
