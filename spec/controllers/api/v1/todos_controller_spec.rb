@@ -33,4 +33,14 @@ RSpec.describe Api::V1::TodosController, type: :controller do
       expect(parsed_todo["id"]).to eq(todo.id)
     end
   end
+
+  describe "POST CREATE" do
+    it "can create a new todo in json" do
+      todo = {format: :json, todo: {title: "Homework", task: "Read to Voltaire"}}
+      post :create, todo
+
+      expect(Todo.count).to eq(1)
+      expect(response.body).to include("Homework")
+    end
+  end
 end
