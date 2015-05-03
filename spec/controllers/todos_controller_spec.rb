@@ -37,9 +37,10 @@ RSpec.describe TodosController, type: :controller do
         expect(todo.title).to eq("Grocery Shopping")
         put :update, id: todo.id, todo: {title: "Clean up", task: "do laundry"}
 
+        updated_todo = Todo.first
         assert_redirected_to root_path
-        expect(todo.title).to eq("Clean up")
-        expect(todo.task).to eq("do laundry")
+        expect(updated_todo.title).to eq("Clean up")
+        expect(updated_todo.task).to eq("do laundry")
       end
     end
 end
