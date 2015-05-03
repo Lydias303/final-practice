@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::TodoControllerController, type: :controller do
+RSpec.describe Api::V1::TodosController, type: :controller do
 
   describe "GET INDEX" do
 
