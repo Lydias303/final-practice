@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::TodosController, type: :controller do
 
-  describe "GET INDEX" do
+  describe "GET #INDEX" do
 
     it "responds to json" do
       todo = create(:todo)
@@ -19,7 +19,7 @@ RSpec.describe Api::V1::TodosController, type: :controller do
     end
   end
 
-  describe "GET SHOW" do
+  describe "GET #SHOW" do
 
     it "responds to json in the show" do
       todo = create(:todo)
@@ -34,7 +34,7 @@ RSpec.describe Api::V1::TodosController, type: :controller do
     end
   end
 
-  describe "POST CREATE" do
+  describe "POST #CREATE" do
     it "can create a new todo in json" do
       todo = {format: :json, todo: {title: "Homework", task: "Read to Voltaire"}}
       post :create, todo
@@ -57,7 +57,19 @@ RSpec.describe Api::V1::TodosController, type: :controller do
 
       expect(updated_todo["title"]).to eq("Keep in Touch")
       expect(updated_todo["task"]).to eq("Email Sarah")
-      expect(todo["id"]).to eq(updated_todo["id"])        
+      expect(todo["id"]).to eq(updated_todo["id"])
+    end
+  end
+
+  describe "DELETE #DESTROY" do
+    it "can delete a todo" do
+      todo = create(:todo)
+      expect(Todo.count).to eq(1)
+
+      delete :destroy, id: todo.id
+
+      expect(response.status).to eq(200)
+      expect(Todo.count).to eq(0)
     end
   end
 end
