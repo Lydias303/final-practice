@@ -43,4 +43,21 @@ RSpec.describe Api::V1::TodosController, type: :controller do
       expect(response.body).to include("Homework")
     end
   end
+
+  describe "PUT #UPDATE" do
+    it "can update a todo" do
+      todo = create(:todo)
+      params = { title: "Keep in Touch", task: "Email Sarah"}
+
+      put :update, todo: params, id: todo.id
+
+      expect(response.status).to eq(200)
+
+      updated_todo = JSON.parse(response.body)
+
+      expect(updated_todo["title"]).to eq("Keep in Touch")
+      expect(updated_todo["task"]).to eq("Email Sarah")
+      expect(todo["id"]).to eq(updated_todo["id"])        
+    end
+  end
 end

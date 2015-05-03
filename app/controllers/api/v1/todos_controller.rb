@@ -16,6 +16,13 @@ class Api::V1::TodosController < ApplicationController
     respond_with @todo
   end
 
+  def update
+    @todo = Todo.find(params[:id])
+    @todo.update_attributes(todo_params)
+
+    render json: @todo
+  end
+
   private
 
   def todo_params
