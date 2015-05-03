@@ -10,7 +10,6 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    require 'pry' ; binding.pry
     @todo = Todo.find(params[:id])
     @todo.destroy
     redirect_to root_path
