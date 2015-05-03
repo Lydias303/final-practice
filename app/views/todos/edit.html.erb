@@ -1,0 +1,7 @@
+<div class="edit-todo">
+  <%= form_for @todo do |f| %>
+    Title: <%= f.text_field :title %><br />
+    Task: <%= f.text_field :task %><br />
+    <%= f.submit %>
+  <% end %>
+</div>
