@@ -20,6 +20,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'pry'
 
+gem 'responders'
+
 group :development, :test do
 
   gem 'byebug'
