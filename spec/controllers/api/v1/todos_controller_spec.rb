@@ -26,7 +26,7 @@ RSpec.describe Api::V1::TodosController, type: :controller do
 
       get :show, id: todo.id, format: :json
 
-      parsed_todo = todo.parse(response.body)
+      parsed_todo = JSON.parse(response.body)
 
       expect(response.status).to eq(200)
       expect(parsed_todo["title"]).to eq(todo.title)
