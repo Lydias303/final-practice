@@ -15,6 +15,15 @@ class TodosController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @todo = todo.find(params[:id])
+  end
+
+  def update
+    @todo = todo.find(params[:id])
+    @todo.update
+  end
+
   private
 
   def todo_params
