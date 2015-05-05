@@ -11,7 +11,7 @@ RSpec.describe TodosController, type: :controller do
 
   describe "POST #create" do
     it "can create a new todo" do
-      post :create, todo: { title: "Work out", task: "go to yoga at 5pm"}
+      post :create, todo: { title: "Work out"}
 
       assert_redirected_to root_path
       expect(Todo.count).to eq(1)
@@ -35,12 +35,11 @@ RSpec.describe TodosController, type: :controller do
         todo = create(:todo)
         expect(Todo.count).to eq(1)
         expect(todo.title).to eq("Grocery Shopping")
-        put :update, id: todo.id, todo: {title: "Clean up", task: "do laundry"}
+        put :update, id: todo.id, todo: {title: "Clean up"}
 
         updated_todo = Todo.first
         assert_redirected_to root_path
         expect(updated_todo.title).to eq("Clean up")
-        expect(updated_todo.task).to eq("do laundry")
       end
     end
 end
